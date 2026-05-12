@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satori Metals | Design Handoff Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#FACB3F',
+                        'brand-foreground': '#000000',
+                        background: '#000000',
+                        foreground: '#FFFFFF',
+                        card: '#0A0A0A',
+                        'card-foreground': '#FFFFFF',
+                        muted: '#1A1A1A',
+                        'muted-foreground': '#A1A1AA',
+                        border: '#27272A',
+                        up: '#22C55E',
+                        down: '#EF4444',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        logo: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @layer utilities {
+            .no-scrollbar::-webkit-scrollbar { display: none; }
+            .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            .glass { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        }
+        body { background-color: #000000; color: #FFFFFF; font-family: 'Inter', sans-serif; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-scroll { animation: scroll 30s linear infinite; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col h-screen overflow-hidden text-foreground">
+
+    <!-- PRICE TICKER -->
+    <div class="h-10 bg-muted/50 border-b border-border flex items-center overflow-hidden shrink-0">
+        <div class="flex animate-scroll whitespace-nowrap gap-8 px-4">
+            <div class="flex items-center gap-3 px-4"><span class="text-xs font-bold text-muted-foreground">XAU</span><span class="text-sm font-mono font-medium">$2,345.67</span><div class="flex items-center text-xs font-bold text-up"><i data-lucide="arrow-up-right" class="w-3 h-3"></i>0.53%</div></div>
+            <div class="flex items-center gap-3 px-4"><span class="text-xs font-bold text-muted-foreground">XAG</span><span class="text-sm font-mono font-medium">$28.45</span><div class="flex items-center text-xs font-bold text-down"><i data-lucide="arrow-down-right" class="w-3 h-3"></i>0.42%</div></div>
+            <div class="flex items-center gap-3 px-4"><span class="text-xs font-bold text-muted-foreground">XPT</span><span class="text-sm font-mono font-medium">$980.20</span><div class="flex items-center text-xs font-bold text-up"><i data-lucide="arrow-up-right" class="w-3 h-3"></i>0.55%</div></div>
+            <div class="flex items-center gap-3 px-4"><span class="text-xs font-bold text-muted-foreground">XPD</span><span class="text-sm font-mono font-medium">$1,020.50</span><div class="flex items-center text-xs font-bold text-down"><i data-lucide="arrow-down-right" class="w-3 h-3"></i>1.48%</div></div>
+            <div class="flex items-center gap-3 px-4"><span class="text-xs font-bold text-muted-foreground">XAU</span><span class="text-sm font-mono font-medium">$2,345.67</span><div class="flex items-center text-xs font-bold text-up"><i data-lucide="arrow-up-right" class="w-3 h-3"></i>0.53%</div></div>
+            <div class="flex items-center gap-3 px-4"><span class="text-xs font-bold text-muted-foreground">XAG</span><span class="text-sm font-mono font-medium">$28.45</span><div class="flex items-center text-xs font-bold text-down"><i data-lucide="arrow-down-right" class="w-3 h-3"></i>0.42%</div></div>
+            <div class="flex items-center gap-3 px-4"><span class="text-xs font-bold text-muted-foreground">XPT</span><span class="text-sm font-mono font-medium">$980.20</span><div class="flex items-center text-xs font-bold text-up"><i data-lucide="arrow-up-right" class="w-3 h-3"></i>0.55%</div></div>
+            <div class="flex items-center gap-3 px-4"><span class="text-xs font-bold text-muted-foreground">XPD</span><span class="text-sm font-mono font-medium">$1,020.50</span><div class="flex items-center text-xs font-bold text-down"><i data-lucide="arrow-down-right" class="w-3 h-3"></i>1.48%</div></div>
+        </div>
+    </div>
+
+    <div class="flex flex-1 overflow-hidden">
+        <!-- SIDEBAR -->
+        <aside class="w-64 flex flex-col border-r border-border bg-card/50 h-full shrink-0">
+            <div class="h-16 flex items-center px-6 border-b border-border">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 flex items-center justify-center">
+                        <svg viewBox="0 0 24 24" class="w-8 h-8">
+                            <polygon points="14,2 24,2 12,14 2,14" fill="#FACB3F" />
+                            <polygon points="22,10 12,10 0,22 10,22" fill="#FACB3F" fill-opacity="0.8" />
+                        </svg>
+                    </div>
+                    <span class="font-logo text-lg font-bold tracking-tight">Satori<span class="text-brand">Metals</span></span>
+                </div>
+            </div>
+
+            <div class="flex-1 py-8 px-4 space-y-1 overflow-y-auto no-scrollbar">
+                <p class="px-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-4">Main Menu</p>
+                <div class="flex items-center gap-3 px-3 py-2.5 bg-brand/10 text-brand rounded-xl border border-brand/10 cursor-pointer">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i><span class="text-sm font-semibold">Dashboard</span>
+                </div>
+                <div class="pt-4 space-y-1">
+                    <div class="flex items-center justify-between px-3 py-1 cursor-pointer">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Markets</span>
+                        <i data-lucide="chevron-right" class="w-3 h-3 rotate-90 text-muted-foreground"></i>
+                    </div>
+                    <div class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer transition-colors">
+                        <i data-lucide="coins" class="w-5 h-5"></i><span class="text-sm font-semibold">Metals Market</span>
+                    </div>
+                </div>
+                <div class="pt-4 space-y-1">
+                    <div class="flex items-center justify-between px-3 py-1 cursor-pointer">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Analysis</span>
+                        <i data-lucide="chevron-right" class="w-3 h-3 rotate-90 text-muted-foreground"></i>
+                    </div>
+                    <div class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer transition-colors">
+                        <i data-lucide="line-chart" class="w-5 h-5"></i><span class="text-sm font-semibold">Shanghai Premium</span>
+                    </div>
+                    <div class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer transition-colors">
+                        <i data-lucide="newspaper" class="w-5 h-5"></i><span class="text-sm font-semibold">Economic Calendar</span>
+                    </div>
+                </div>
+                <div class="pt-4 space-y-1">
+                    <p class="px-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-4">System</p>
+                    <div class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer transition-colors">
+                        <i data-lucide="settings" class="w-5 h-5"></i><span class="text-sm font-semibold">Settings</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 border-t border-border">
+                <div class="bg-brand/5 rounded-2xl p-4 border border-brand/10">
+                    <p class="text-xs font-bold text-brand mb-1">PRO Feature</p>
+                    <p class="text-[10px] text-muted-foreground mb-3 leading-relaxed">Institutional-grade tools, lower fees, and priority support.</p>
+                    <button class="w-full bg-brand text-brand-foreground text-[10px] font-bold py-1.5 rounded-lg active:scale-95 transition-transform">Upgrade Now</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="h-16 border-b border-border bg-card/30 flex items-center justify-between px-8 shrink-0">
+                <div class="flex items-center gap-4">
+                    <button class="lg:hidden"><i data-lucide="menu" class="w-6 h-6"></i></button>
+                    <h2 class="text-lg font-bold">Market Deck</h2>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="hidden md:flex items-center gap-6 px-4 py-2 border border-border rounded-xl bg-muted/30">
+                        <div class="flex flex-col"><span class="text-[8px] font-bold text-muted-foreground uppercase">Network</span><span class="text-[10px] font-mono font-bold text-up">LIVE CONNECT</span></div>
+                        <div class="flex flex-col text-right"><span class="text-[8px] font-bold text-muted-foreground uppercase">Latency</span><span class="text-[10px] font-mono font-bold">12 MS</span></div>
+                    </div>
+                    <div class="w-10 h-10 rounded-full border border-border bg-muted flex items-center justify-center overflow-hidden cursor-pointer hover:border-brand/50 transition-colors">
+                        <img src="https://ui-avatars.com/api/?name=User&background=FACB3F&color=000" alt="User">
+                    </div>
+                </div>
+            </header>
+
+            <main class="flex-1 overflow-y-auto no-scrollbar">
+                <div class="p-8 space-y-8">
+                    <!-- Dashboard Layout -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <!-- Left Column -->
+                        <div class="lg:col-span-8 space-y-8">
+                            <!-- CHART -->
+                            <div class="bg-card border border-border rounded-2xl shadow-lg overflow-hidden">
+                                <div class="px-6 py-4 border-b border-border flex justify-between items-center bg-muted/10">
+                                    <div class="flex items-center gap-4">
+                                        <div class="flex items-center gap-2">
+                                            <span class="px-2 py-1 bg-brand text-black text-[10px] font-bold rounded">XAU/USD</span>
+                                            <span class="text-xl font-mono font-bold">$2,345.67</span>
+                                        </div>
+                                        <div class="flex items-center text-xs font-bold text-up">
+                                            <i data-lucide="arrow-up-right" class="w-4 h-4 mr-0.5"></i>
+                                            0.53%
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-1">
+                                        <button class="px-3 py-1.5 text-xs font-bold border border-border bg-muted rounded-lg">1H</button>
+                                        <button class="px-3 py-1.5 text-xs font-bold border border-border rounded-lg hover:bg-muted transition-colors">1D</button>
+                                        <button class="px-3 py-1.5 text-xs font-bold border border-border rounded-lg hover:bg-muted transition-colors">1W</button>
+                                    </div>
+                                </div>
+                                <div class="h-[400px] bg-muted/5 relative overflow-hidden flex items-center justify-center">
+                                    <svg viewBox="0 0 100 40" class="w-full h-full text-brand/20 p-8" preserveAspectRatio="none">
+                                        <path d="M0 35 Q 10 32, 20 25 T 40 28 T 60 15 T 80 18 T 100 5" fill="none" stroke="currentColor" stroke-width="0.5" />
+                                        <path d="M0 35 Q 10 32, 20 25 T 40 28 T 60 15 T 80 18 T 100 5 V 40 H 0 Z" fill="currentColor" fill-opacity="0.05" />
+                                    </svg>
+                                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                        <div class="text-center group">
+                                            <i data-lucide="line-chart" class="w-12 h-12 text-muted-foreground/20 mx-auto mb-4 group-hover:text-brand/40 transition-colors"></i>
+                                            <p class="text-xs font-bold text-muted-foreground uppercase tracking-widest opacity-30 group-hover:opacity-60 transition-opacity">Interactive TradingView Engine</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- HEATMAP -->
+                            <div class="bg-card border border-border rounded-2xl p-6 shadow-lg">
+                                <h3 class="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-6">Market Heatmap</h3>
+                                <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-2">
+                                    <div class="aspect-square bg-up/80 rounded-lg flex items-center justify-center text-[10px] font-bold shadow-sm hover:scale-105 transition-transform cursor-pointer">XAU</div>
+                                    <div class="aspect-square bg-down/40 rounded-lg flex items-center justify-center text-[10px] font-bold shadow-sm hover:scale-105 transition-transform cursor-pointer">XAG</div>
+                                    <div class="aspect-square bg-up/60 rounded-lg flex items-center justify-center text-[10px] font-bold shadow-sm hover:scale-105 transition-transform cursor-pointer">XPT</div>
+                                    <div class="aspect-square bg-down/60 rounded-lg flex items-center justify-center text-[10px] font-bold shadow-sm hover:scale-105 transition-transform cursor-pointer">XPD</div>
+                                    <div class="aspect-square bg-up/40 rounded-lg flex items-center justify-center text-[10px] font-bold shadow-sm hover:scale-105 transition-transform cursor-pointer">BTC</div>
+                                    <div class="aspect-square bg-down/20 rounded-lg flex items-center justify-center text-[10px] font-bold shadow-sm hover:scale-105 transition-transform cursor-pointer">ETH</div>
+                                    <div class="aspect-square bg-up/30 rounded-lg flex items-center justify-center text-[10px] font-bold shadow-sm hover:scale-105 transition-transform cursor-pointer">SPX</div>
+                                    <div class="aspect-square bg-muted rounded-lg flex items-center justify-center text-[10px] font-bold shadow-sm hover:scale-105 transition-transform cursor-pointer">DXY</div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <!-- NEWS -->
+                                <div class="bg-card border border-border rounded-2xl overflow-hidden shadow-lg border-t-2 border-t-brand/20">
+                                    <div class="p-4 border-b border-border flex justify-between items-center bg-muted/5">
+                                        <h3 class="font-bold text-xs uppercase tracking-widest text-muted-foreground">Market News</h3>
+                                        <i data-lucide="rss" class="w-4 h-4 text-brand/40"></i>
+                                    </div>
+                                    <div class="divide-y divide-border">
+                                        <div class="p-5 hover:bg-muted/30 cursor-pointer transition-colors space-y-2 group">
+                                            <div class="flex items-center gap-2 text-[10px] font-bold">
+                                                <span class="px-2 py-0.5 bg-brand/10 text-brand rounded uppercase">Analysis</span>
+                                                <span class="text-muted-foreground">2h ago</span>
+                                            </div>
+                                            <h4 class="text-sm font-bold leading-snug group-hover:text-brand transition-colors">Gold Prices Surge as Central Banks Increase Monthly Reserves</h4>
+                                        </div>
+                                        <div class="p-5 hover:bg-muted/30 cursor-pointer transition-colors space-y-2 group">
+                                            <div class="flex items-center gap-2 text-[10px] font-bold">
+                                                <span class="px-2 py-0.5 bg-brand/10 text-brand rounded uppercase">Market</span>
+                                                <span class="text-muted-foreground">4h ago</span>
+                                            </div>
+                                            <h4 class="text-sm font-bold leading-snug group-hover:text-brand transition-colors">Silver Market Outlook: Industrial Demand Predicted to Hit New All-time High</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- CALENDAR -->
+                                <div class="bg-card border border-border rounded-2xl shadow-lg flex flex-col">
+                                    <div class="p-4 border-b border-border flex justify-between items-center bg-muted/5">
+                                        <div class="flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-brand"></i><h3 class="text-xs font-bold uppercase tracking-widest tracking-wider">Calendar</h3></div>
+                                        <span class="text-[10px] font-bold text-muted-foreground px-2 py-0.5 bg-muted rounded">TODAY</span>
+                                    </div>
+                                    <div class="flex-1 overflow-x-auto no-scrollbar">
+                                        <table class="w-full text-left text-sm">
+                                            <thead><tr class="border-b border-border bg-muted/10"><th class="px-4 py-3 font-bold text-muted-foreground text-[10px] uppercase tracking-wider">Time</th><th class="px-4 py-3 font-bold text-muted-foreground text-[10px] uppercase tracking-wider">Asset</th><th class="px-4 py-3 font-bold text-muted-foreground text-[10px] uppercase tracking-wider text-right">Event</th></tr></thead>
+                                            <tbody class="divide-y divide-border/50">
+                                                <tr class="hover:bg-muted/30 transition-colors"><td class="px-4 py-3 font-mono text-[10px] text-muted-foreground">08:30</td><td class="px-4 py-3"><span class="px-1.5 py-0.5 rounded bg-muted text-[10px] font-bold border border-border/50">USD</span></td><td class="px-4 py-3 text-right text-xs font-bold">Core CPI m/m</td></tr>
+                                                <tr class="hover:bg-muted/30 transition-colors"><td class="px-4 py-3 font-mono text-[10px] text-muted-foreground">10:00</td><td class="px-4 py-3"><span class="px-1.5 py-0.5 rounded bg-muted text-[10px] font-bold border border-border/50">USD</span></td><td class="px-4 py-3 text-right text-xs font-bold">ISM PMI</td></tr>
+                                                <tr class="hover:bg-muted/30 transition-colors"><td class="px-4 py-3 font-mono text-[10px] text-muted-foreground">14:00</td><td class="px-4 py-3"><span class="px-1.5 py-0.5 rounded bg-muted text-[10px] font-bold border border-border/50">EUR</span></td><td class="px-4 py-3 text-right text-xs font-bold">ECB Rate Decision</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="lg:col-span-4 space-y-8">
+                            <!-- ORDER -->
+                            <div class="bg-card border border-border rounded-2xl p-6 shadow-xl relative overflow-hidden group">
+                                <div class="absolute top-0 right-0 w-32 h-32 bg-brand/5 blur-3xl -mr-16 -mt-16 rounded-full group-hover:bg-brand/10 transition-colors"></div>
+                                <div class="grid grid-cols-2 gap-4 mb-6 relative">
+                                    <button class="py-2.5 rounded-xl font-bold bg-muted text-white text-sm hover:scale-[1.02] active:scale-95 transition-all">BUY</button>
+                                    <button class="py-2.5 rounded-xl font-bold border border-border text-muted-foreground text-sm hover:text-white hover:bg-muted/30 transition-all">SELL</button>
+                                </div>
+                                <div class="space-y-4 relative">
+                                    <div class="p-4 bg-muted/40 rounded-xl border border-border"><p class="text-[10px] font-bold text-muted-foreground uppercase mb-1">Asset</p><div class="flex justify-between items-center"><span class="font-bold">Gold Spot</span><span class="text-xs font-bold text-brand underline cursor-pointer hover:text-brand/80">MAX</span></div></div>
+                                    <div class="p-4 bg-muted/40 rounded-xl border border-border"><p class="text-[10px] font-bold text-muted-foreground uppercase mb-1">Amount (OZ)</p><div class="flex justify-between items-center font-mono font-bold"><span>1.00</span><span class="text-muted-foreground text-[10px]">≃ $2,345.67</span></div></div>
+                                    <button class="w-full py-4 bg-brand text-brand-foreground rounded-2xl font-bold text-sm shadow-brand/20 shadow-lg hover:shadow-brand/40 hover:scale-[1.01] active:scale-95 transition-all">PLACE ORDER</button>
+                                </div>
+                            </div>
+
+                            <!-- CALCULATOR -->
+                            <div class="bg-card border border-border rounded-2xl p-6 shadow-lg">
+                                <div class="flex items-center gap-2 mb-6 text-brand"><i data-lucide="calculator" class="w-4 h-4"></i><h3 class="text-xs font-bold uppercase tracking-widest">Melt Calculator</h3></div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="p-3 bg-muted/40 rounded-xl text-center border border-border/50"><p class="text-[8px] font-bold opacity-50 mb-1">Purity</p><p class="text-sm font-bold">.999 Fine</p></div>
+                                    <div class="p-3 bg-muted/40 rounded-xl text-center border border-border/50"><p class="text-[8px] font-bold opacity-50 mb-1">Weight (g)</p><p class="text-sm font-bold">31.10</p></div>
+                                </div>
+                                <div class="mt-4 p-4 bg-brand/5 border border-brand/20 rounded-xl text-center group transition-colors hover:border-brand/40">
+                                    <p class="text-[10px] font-bold text-brand uppercase tracking-widest mb-1">Estimated Value</p>
+                                    <p class="text-2xl font-mono font-bold group-hover:scale-105 transition-transform">$2,345.67</p>
+                                </div>
+                            </div>
+
+                            <!-- WATCHLIST -->
+                            <div class="bg-card border border-border rounded-2xl p-6 shadow-lg">
+                                <h3 class="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-4">Watchlist</h3>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center group cursor-pointer"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-orange-500/10 text-orange-500 flex items-center justify-center font-bold text-xs group-hover:scale-110 transition-transform">Au</div><div><p class="text-sm font-bold">Gold</p><p class="text-[10px] text-muted-foreground uppercase font-mono tracking-tight">XAU / USD</p></div></div><div class="text-right"><p class="text-sm font-bold font-mono">$2,345.67</p><p class="text-[10px] text-up font-bold">+0.53%</p></div></div>
+                                    <div class="flex justify-between items-center group cursor-pointer"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-slate-500/10 text-slate-500 flex items-center justify-center font-bold text-xs group-hover:scale-110 transition-transform">Ag</div><div><p class="text-sm font-bold">Silver</p><p class="text-[10px] text-muted-foreground uppercase font-mono tracking-tight">XAG / USD</p></div></div><div class="text-right"><p class="text-sm font-bold font-mono">$28.45</p><p class="text-[10px] text-down font-bold">-0.42%</p></div></div>
+                                    <div class="flex justify-between items-center group cursor-pointer"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-slate-400/10 text-slate-400 flex items-center justify-center font-bold text-xs group-hover:scale-110 transition-transform">Pt</div><div><p class="text-sm font-bold">Platinum</p><p class="text-[10px] text-muted-foreground uppercase font-mono tracking-tight">XPT / USD</p></div></div><div class="text-right"><p class="text-sm font-bold font-mono">$980.20</p><p class="text-[10px] text-up font-bold">+0.55%</p></div></div>
+                                </div>
+                            </div>
+
+                            <!-- PRO PROMO -->
+                            <div class="bg-brand rounded-2xl p-6 text-brand-foreground relative overflow-hidden group shadow-lg shadow-brand/20">
+                                <div class="relative z-10">
+                                    <h3 class="text-lg font-bold mb-2">Upgrade to Pro</h3>
+                                    <p class="text-sm font-medium opacity-80 mb-6 leading-relaxed">Access institutional-grade tools, lower fees, and priority support.</p>
+                                    <button class="bg-black text-white px-5 py-2 rounded-xl text-sm font-bold hover:bg-black/90 active:scale-95 transition-all">Learn More</button>
+                                </div>
+                                <i data-lucide="shield" class="absolute -right-6 -bottom-6 w-32 h-32 opacity-10 group-hover:scale-110 group-hover:rotate-12 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Compare Section -->
+                    <section class="bg-card border border-border rounded-2xl p-8 shadow-lg">
+                        <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                            <div class="space-y-4 max-w-md">
+                                <h2 class="text-2xl font-bold">Quick Compare</h2>
+                                <p class="text-muted-foreground text-sm leading-relaxed">Instantly compare precious metals, cryptocurrencies, and global indices to identify market trends and arbitrage opportunities.</p>
+                                <div class="flex gap-4">
+                                    <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand"></div><span class="text-[10px] font-bold uppercase tracking-widest">Real-time</span></div>
+                                    <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand"></div><span class="text-[10px] font-bold uppercase tracking-widest">Cross-Asset</span></div>
+                                </div>
+                            </div>
+                            <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+                                <div class="p-4 bg-muted/40 border border-border rounded-xl hover:border-brand/40 transition-colors group"><p class="text-[10px] font-bold text-muted-foreground uppercase mb-1">Gold / Silver</p><div class="flex items-end justify-between"><p class="text-xl font-mono font-bold group-hover:text-brand transition-colors">82.45</p><p class="text-xs font-bold text-up">+0.12%</p></div></div>
+                                <div class="p-4 bg-muted/40 border border-border rounded-xl hover:border-brand/40 transition-colors group"><p class="text-[10px] font-bold text-muted-foreground uppercase mb-1">BTC / Gold</p><div class="flex items-end justify-between"><p class="text-xl font-mono font-bold group-hover:text-brand transition-colors">28.12</p><p class="text-xs font-bold text-down">-1.45%</p></div></div>
+                                <div class="p-4 bg-muted/40 border border-border rounded-xl hover:border-brand/40 transition-colors group"><p class="text-[10px] font-bold text-muted-foreground uppercase mb-1">S&P / Gold</p><div class="flex items-end justify-between"><p class="text-xl font-mono font-bold group-hover:text-brand transition-colors">2.15</p><p class="text-xs font-bold text-up">+0.34%</p></div></div>
+                            </div>
+                            <button class="bg-brand text-brand-foreground px-6 py-3 rounded-xl font-bold flex items-center gap-2 shrink-0 hover:shadow-lg hover:shadow-brand/20 transition-all active:scale-95">Full Comparison <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+                        </div>
+                    </section>
+
+                    <!-- Features Section -->
+                    <section class="py-16 bg-muted/20 -mx-8 px-8 border-t border-border">
+                        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+                            <div class="flex flex-col items-center text-center gap-4 group">
+                                <div class="w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center group-hover:bg-brand/20 transition-colors md:group-hover:-translate-y-1 duration-300"><i data-lucide="globe" class="w-8 h-8 text-brand"></i></div>
+                                <h3 class="text-lg font-bold">Global Access</h3>
+                                <p class="text-sm text-muted-foreground leading-relaxed">Trade precious metals from anywhere in the world with 24/7 market connectivity.</p>
+                            </div>
+                            <div class="flex flex-col items-center text-center gap-4 group">
+                                <div class="w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center group-hover:bg-brand/20 transition-colors md:group-hover:-translate-y-1 duration-300"><i data-lucide="zap" class="w-8 h-8 text-brand"></i></div>
+                                <h3 class="text-lg font-bold">Lightning Fast</h3>
+                                <p class="text-sm text-muted-foreground leading-relaxed">Our advanced trading engine ensures your orders are executed in exact milliseconds.</p>
+                            </div>
+                            <div class="flex flex-col items-center text-center gap-4 group">
+                                <div class="w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center group-hover:bg-brand/20 transition-colors md:group-hover:-translate-y-1 duration-300"><i data-lucide="shield" class="w-8 h-8 text-brand"></i></div>
+                                <h3 class="text-lg font-bold">Vault Security</h3>
+                                <p class="text-sm text-muted-foreground leading-relaxed">Your assets are protected by multi-sig cold storage and institutional-grade encryption.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Footer -->
+                    <footer class="bg-background border-t border-border py-16 -mx-8 px-8">
+                        <div class="max-w-7xl mx-auto overflow-hidden">
+                            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-16">
+                                <div class="col-span-2">
+                                    <div class="flex items-center gap-2 mb-6">
+                                        <div class="w-8 h-8 flex items-center justify-center">
+                                            <svg viewBox="0 0 24 24" class="w-8 h-8 text-brand">
+                                                <polygon points="14,2 24,2 12,14 2,14" fill="currentColor" />
+                                                <polygon points="22,10 12,10 0,22 10,22" fill="currentColor" fill-opacity="0.8" />
+                                            </svg>
+                                        </div>
+                                        <span class="font-logo text-lg font-bold tracking-tight">Satori<span class="text-brand">Metals</span></span>
+                                    </div>
+                                    <p class="text-sm text-muted-foreground max-w-xs leading-relaxed">
+                                        The world's most advanced precious metals trading platform. Secure, fast, and transparent sovereign trade.
+                                    </p>
+                                </div>
+                                <div class="space-y-4"><h4 class="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Platform</h4><ul class="space-y-2"><li class="text-sm text-muted-foreground hover:text-brand cursor-pointer transition-colors">Markets</li><li class="text-sm text-muted-foreground hover:text-brand cursor-pointer transition-colors">Trading</li><li class="text-sm text-muted-foreground hover:text-brand cursor-pointer transition-colors">Fees</li></ul></div>
+                                <div class="space-y-4"><h4 class="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Company</h4><ul class="space-y-2"><li class="text-sm text-muted-foreground hover:text-brand cursor-pointer transition-colors">About</li><li class="text-sm text-muted-foreground hover:text-brand cursor-pointer transition-colors">Careers</li><li class="text-sm text-muted-foreground hover:text-brand cursor-pointer transition-colors">Press</li></ul></div>
+                                <div class="space-y-4"><h4 class="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Resources</h4><ul class="space-y-2"><li class="text-sm text-muted-foreground hover:text-brand cursor-pointer transition-colors">API Docs</li><li class="text-sm text-muted-foreground hover:text-brand cursor-pointer transition-colors">Guides</li><li class="text-sm text-muted-foreground hover:text-brand cursor-pointer transition-colors">Support</li></ul></div>
+                                <div class="space-y-4"><h4 class="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Legal</h4><ul class="space-y-2"><li class="text-sm text-muted-foreground hover:text-brand cursor-pointer transition-colors">Privacy</li><li class="text-sm text-muted-foreground hover:text-brand cursor-pointer transition-colors">Terms</li><li class="text-sm text-muted-foreground hover:text-brand cursor-pointer transition-colors">SLA</li></ul></div>
+                            </div>
+                            <div class="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
+                                <p class="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">© 2026 Satori Metals Group • Handoff Documentation v1.4</p>
+                                <div class="flex gap-6">
+                                    <div class="w-8 h-8 rounded-lg bg-muted flex items-center justify-center hover:text-brand transition-colors cursor-pointer"><i data-lucide="twitter" class="w-4 h-4"></i></div>
+                                    <div class="w-8 h-8 rounded-lg bg-muted flex items-center justify-center hover:text-brand transition-colors cursor-pointer"><i data-lucide="linkedin" class="w-4 h-4"></i></div>
+                                    <div class="w-8 h-8 rounded-lg bg-muted flex items-center justify-center hover:text-brand transition-colors cursor-pointer"><i data-lucide="github" class="w-4 h-4"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
